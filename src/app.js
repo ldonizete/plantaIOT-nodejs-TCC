@@ -5,6 +5,9 @@ const config = require('./config');
 
 const app = express();
 
+//Load MQTT
+const MQTT = require('./mqtt');
+
 //Connect to the bank
 mongoose.connect(config.connectionString);
 

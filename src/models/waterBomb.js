@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  moisture: {
-    type: String,
+  turnOn: {
+    type: Boolean,
     required: true
   },
   date: {
@@ -18,4 +18,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Soil', schema);
+module.exports = mongoose.model('WaterBomb', schema);
