@@ -1,6 +1,4 @@
-const sensorLDR = require("../models/sensorLDR");
-
-const mongoose = requite('mongoose');
+const mongoose = require('mongoose');
 const WaterBomb = mongoose.model('WaterBomb');
 
 exports.get = async() => {

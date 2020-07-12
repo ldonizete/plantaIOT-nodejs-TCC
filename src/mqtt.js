@@ -15,6 +15,13 @@ client.on('connect', function() {
       // client.publish('topUmidade', 'Hello mqtt')
     }
   })
+
+  client.subscribe('topWaterBomb', function (err) {
+    if(!err){
+      console.log("conectado - topWaterBomb");
+      // client.publish('topUmidade', 'Hello mqtt')
+    }
+  })
 })
 
 client.on('message', function(topic, message) {
