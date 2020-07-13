@@ -6,10 +6,6 @@ const schema = new Schema({
     type: String,
     required:true
   },
-  temperature : {
-    type: String,
-    required: true,
-  },
   date: {
     type: Date, 
     required: true,
@@ -22,4 +18,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('DHT11', schema);
+module.exports = mongoose.model('Humidity', schema);

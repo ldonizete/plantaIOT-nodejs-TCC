@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-const DHT11 = mongoose.model('DHT11');
+const Temperature = mongoose.model('Temperature');
 
 exports.get = async() => {
-  const res = await DHT11.find({active:true});
+  const res = await Temperature.find({active:true});
   return res;
 }
 
 exports.getByDate = async(date) => {
-  const res = await DHT11
+  const res = await Temperature
     .findOne({
       date: date,
       active: true
@@ -16,10 +16,10 @@ exports.getByDate = async(date) => {
 }
 
 exports.create = async(data) => {
-  var dht11 = new DHT11(data);
-  await dht11.save();
+  var temperature = new Temperature(data);
+  await temperature.save();
 }
 
 exports.delete = async(id) => {
-  await DHT11.findOneAndRemove();
+  await Temperature.findOneAndRemove();
 }

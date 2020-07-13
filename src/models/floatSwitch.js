@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-  lightness: {
-    type: String,
+  levelWater: {
+    type: Boolean,
     required: true
   },
   date: {
@@ -18,4 +18,4 @@ const schema = new Schema({
   }
 });
 
-module.exports = mongoose.model('LDR', schema);
+module.exports = mongoose.model('FloatSwitch', schema);

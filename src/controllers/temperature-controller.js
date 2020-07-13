@@ -1,4 +1,4 @@
-const repository = require('../repositories/sensorDHT11-repository');
+const repository = require('../repositories/temperature-repository');
 
 exports.get = async(req, res, next) => {
   try {
