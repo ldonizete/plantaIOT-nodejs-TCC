@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 const Humidity = mongoose.model('Humidity');
 
+// exports.get = async() => {
+//   const res = await Humidity.find({active:true});
+//   return res;
+// }
+
 exports.get = async() => {
-  const res = await Humidity.find({active:true});
+  const res = await Humidity
+  .find({active: true}, 'humidity')
+  .sort({ _id: -1 })
+  .limit(1);
   return res;
 }
 

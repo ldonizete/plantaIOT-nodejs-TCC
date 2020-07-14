@@ -11,6 +11,17 @@ exports.get = async(req, res, next) => {
   }
 }
 
+exports.getLastData = async(req, res, next) => {
+  try {
+    var data = await repository.getLastData();
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: 'Failed your request'
+    })
+  }
+}
+
 exports.getByDate = async(req, res, next) => {
   try {
     var data = await repository.getByDate(req.params.date);

@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 const FloatSwitch = mongoose.model('FloatSwitch');
 
+// exports.get = async() => {
+//   const res = await FloatSwitch.find({active:true});
+//   return res;
+// }
+
 exports.get = async() => {
-  const res = await FloatSwitch.find({active:true});
+  const res = await FloatSwitch
+  .find({active: true}, 'levelWater')
+  .sort({ _id: -1 })
+  .limit(1);
   return res;
 }
 

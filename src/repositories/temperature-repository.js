@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 const Temperature = mongoose.model('Temperature');
 
+// exports.get = async() => {
+//   const res = await Temperature.find({active:true});
+//   return res;
+// }
+
 exports.get = async() => {
-  const res = await Temperature.find({active:true});
+  const res = await Temperature
+  .find({active:true}, 'temperature')
+  .sort({ _id: -1 })
+  .limit(1)
   return res;
 }
 

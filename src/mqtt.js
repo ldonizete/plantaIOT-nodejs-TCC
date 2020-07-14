@@ -71,7 +71,7 @@ client.on('message', function(topic, message) {
   if(topic === 'topFloatSwitch')
   {
     floatSwitchRepository.create({
-      levelWater: message.toString() === 'true' ? true : false
+      levelWater: message.toString()
     })
   }
 

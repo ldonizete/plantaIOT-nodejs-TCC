@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   levelWater: {
-    type: Boolean,
+    type: String,
     required: true
   },
   date: {

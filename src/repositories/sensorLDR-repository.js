@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
 const LDR = mongoose.model('LDR');
 
+// exports.get = async() => {
+//   const res = await LDR.find({active: true}, 'lightness date');
+//   return res;
+// }
+
 exports.get = async() => {
-  const res = await LDR.find({active: true}, 'lightness date');
+  const res = await LDR
+  .find({active: true}, 'lightness')
+  .sort({ _id: -1 })
+  .limit(1);
   return res;
 }
 

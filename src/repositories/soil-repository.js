@@ -18,6 +18,14 @@ exports.getByDate = async(date) => {
   return res;
 }
 
+exports.getLastData = async() => {
+  const res = await Soil
+  .find({active: true}, 'moisture')
+  .sort({ _id: -1 })
+  .limit(1)
+  return res;
+}
+
 exports.create = async(data) => {
   var soil = new Soil(data);
   await soil.save();
