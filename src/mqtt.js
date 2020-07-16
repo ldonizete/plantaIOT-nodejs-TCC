@@ -1,18 +1,18 @@
 var mqtt = require('mqtt');
 
 //Load models
-const Soil = require('./models/soil');
-const FloatSwitch = require('./models/floatSwitch');
-const LDR = require('./models/sensorLDR');
-const Humidity = require('./models/humidity');
-const Temperature = require('./models/temperature');
+const Soil = require('./models/sensors/soil');
+const FloatSwitch = require('./models/sensors/floatSwitch');
+const LDR = require('./models/sensors/sensorLDR');
+const Humidity = require('./models/sensors/humidity');
+const Temperature = require('./models/sensors/temperature');
 
 //Load repository
-const soilRepository = require('./repositories/soil-repository');
-const floatSwitchRepository = require('./repositories/floatSwitch-repository');
-const ldrRepository = require('./repositories/sensorLDR-repository');
-const humidityRepository = require('./repositories/humidity-repository');
-const temperatureRepository = require('./repositories/temperature-repository');
+const soilRepository = require('./repositories/sensors/soil-repository');
+const floatSwitchRepository = require('./repositories/sensors/floatSwitch-repository');
+const ldrRepository = require('./repositories/sensors/sensorLDR-repository');
+const humidityRepository = require('./repositories/sensors/humidity-repository');
+const temperatureRepository = require('./repositories/sensors/temperature-repository');
 
 var client = mqtt.connect("http://mqtt.eclipse.org:1883");
 
