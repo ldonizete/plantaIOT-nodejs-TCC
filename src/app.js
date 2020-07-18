@@ -12,29 +12,37 @@ const MQTT = require('./mqtt');
 mongoose.connect(config.connectionString);
 
 //Load models
+const Customer = require('./models/customer');
+const Plant = require('./models/plant');
+const Product = require('./models/product');
 const Soil = require('./models/sensors/soil');
 const LDR = require('./models/sensors/sensorLDR');
 const Humidity = require('./models/sensors/humidity');
-const WaterBomb = require('./models/triggers/waterBomb');
 const Temperature = require('./models/sensors/temperature');
-const Light = require('./models/triggers/light');
 const FloatSwitch = require('./models/sensors/floatSwitch');
-const Customer = require('./models/customer');
-const Product = require('./models/product')
-const Exhaust = require('./models/triggers/exhaust')
+const Exhaust = require('./models/triggers/exhaust');
+const Fan = require('./models/triggers/fan')
+const WaterBomb = require('./models/triggers/waterBomb');
+const Light = require('./models/triggers/light');
 
 //Load the routes
 const indexRoute = require('./routes/index-route');
+const customerRoute = require('./routes/customer-route');
+const productRoute = require('./routes/product-route');
+const plantRoute = require('./routes/plant-route');
+
+//Sensor routes
 const soilRoute = require('./routes/sensors/soil-route');
 const ldrRoute = require('./routes/sensors/sensorLDR-route');
 const humidityRoute = require('./routes/sensors/humidity-route');
-const waterBombRoute = require('./routes/triggers/waterBomb-route');
 const temperatureRoute = require('./routes/sensors/temperature-route');
-const lightRoute = require('./routes/triggers/light-route');
 const floatRoute = require('./routes/sensors/floatSwitch-route');
-const customerRoute = require('./routes/customer-route');
-const productRoute = require('./routes/product-route');
+
+//Trigger routes
+const waterBombRoute = require('./routes/triggers/waterBomb-route');
+const lightRoute = require('./routes/triggers/light-route');
 const exhaustRoute = require('./routes/triggers/exhaust-route');
+const fanRoute = require('./routes/triggers/fan-route');
 
 app.use(bodyParser.json({
   limit: '5mb'
@@ -54,5 +62,7 @@ app.use('/floatSwitchs', floatRoute);
 app.use('/customers', customerRoute);
 app.use('/products', productRoute);
 app.use('/exhausts', exhaustRoute);
+app.use('/fans', fanRoute);
+app.use('/plants', plantRoute);
 
 module.exports = app;

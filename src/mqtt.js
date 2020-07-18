@@ -58,6 +58,18 @@ client.on('connect', function() {
       console.log("conectado - topTemperature");
     }
   })
+
+  client.subscribe('topFan', function (err) {
+    if(!err){
+      console.log("conectado - topFan");
+    }
+  })
+
+  client.subscribe('topExhaust', function (err) {
+    if(!err){
+      console.log("conectado - topExhaust");
+    }
+  })
 })
 
 client.on('message', function(topic, message) {

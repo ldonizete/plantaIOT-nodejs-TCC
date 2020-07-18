@@ -16,7 +16,8 @@ const schema = new Schema({
   }, 
   customer: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Customer'
+    ref: 'Customer',
+    required: true
   },
   date: {
     type: Date,
