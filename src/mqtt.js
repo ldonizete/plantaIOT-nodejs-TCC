@@ -72,41 +72,54 @@ client.on('connect', function() {
   })
 })
 
-client.on('message', function(topic, message) {
-  if(topic === 'topUmidadeSolo')
+client.on('message', function(topic, message, packet) {
+
+  console.log(packet);
+
+  if(
+    !isNaN(message.toString())
+    && message.toString() !== null
+    && message.toString() !== undefined
+    && message.toString().length > 0
+  )
   {
-    soilRepository.create({
-      moisture: message.toString()
-    })
-  }
-  
-  if(topic === 'topFloatSwitch')
-  {
-    floatSwitchRepository.create({
-      levelWater: message.toString()
-    })
+    if(topic === 'topUmidadeSolo')
+    {
+      soilRepository.create({
+        moisture: message.toString()
+      })
+    }
+    
+    if(topic === 'topFloatSwitch')
+    {
+      floatSwitchRepository.create({
+        levelWater: message.toString()
+      })
+    }
+
+    if(topic === 'topSensorLDR')
+    {
+      ldrRepository.create({
+        lightness: message.toString()
+      })
+    }
+
+    if(topic === 'topHumidity')
+    {
+      humidityRepository.create({
+        humidity: message.toString()
+      })
+    }
+    
+    if(topic === 'topTemperature')
+    {
+      temperatureRepository.create({
+        temperature: message.toString()
+      })
+    }
   }
 
-  if(topic === 'topSensorLDR')
-  {
-    ldrRepository.create({
-      lightness: message.toString()
-    })
-  }
-
-  if(topic === 'topHumidity')
-  {
-    humidityRepository.create({
-      humidity: message.toString()
-    })
-  }
   
-  if(topic === 'topTemperature')
-  {
-    temperatureRepository.create({
-      temperature: message.toString()
-    })
-  }
 })
 
 module.exports = client;
