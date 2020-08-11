@@ -10,7 +10,7 @@ exports.get = async() => {
 
 exports.create = async(data) => {
   var plant = new Plant(data);
-  await product.save();
+  await plant.save();
 }
 
 exports.delete = async(id) => {

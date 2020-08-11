@@ -14,6 +14,7 @@ mongoose.connect(config.connectionString);
 //Load models
 const Customer = require('./models/customer');
 const Plant = require('./models/plant');
+const PlantImage = require('./models/plantImage');
 const Product = require('./models/product');
 const Soil = require('./models/sensors/soil');
 const LDR = require('./models/sensors/sensorLDR');
@@ -30,6 +31,7 @@ const indexRoute = require('./routes/index-route');
 const customerRoute = require('./routes/customer-route');
 const productRoute = require('./routes/product-route');
 const plantRoute = require('./routes/plant-route');
+const plantImageRoute = require('./routes/plantImage-route');
 
 //Sensor routes
 const soilRoute = require('./routes/sensors/soil-route');
@@ -64,5 +66,6 @@ app.use('/products', productRoute);
 app.use('/exhausts', exhaustRoute);
 app.use('/fans', fanRoute);
 app.use('/plants', plantRoute);
+app.use('/plantImages', plantImageRoute);
 
 module.exports = app;

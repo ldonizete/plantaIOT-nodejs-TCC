@@ -1,4 +1,3 @@
-const ValidationContract = require('../validators/fluent-validator');
 const repository = require('../repositories/plant-repository');
 
 exports.get = async(req, res, next) => {
