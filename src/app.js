@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const config = require('./config');
+var cors = require('cors')
 
 const app = express();
 
@@ -52,6 +53,8 @@ app.use(bodyParser.json({
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(cors());
 
 app.use('/', indexRoute);
 app.use('/soils', soilRoute);
