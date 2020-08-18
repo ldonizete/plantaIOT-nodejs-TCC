@@ -20,7 +20,7 @@ exports.getByDate = async(date) => {
 
 exports.getLastData = async() => {
   const res = await Soil
-  .find({active: true}, 'moisture')
+  .find({active: true})
   .sort({ _id: -1 })
   .limit(1)
   .populate('product')
