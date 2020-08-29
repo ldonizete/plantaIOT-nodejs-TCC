@@ -1,4 +1,5 @@
 const repository = require('../repositories/plantImage-repository');
+const client = require('../../mqtt');
 
 exports.get = async(req, res, next) => {
   try {
@@ -13,6 +14,11 @@ exports.get = async(req, res, next) => {
 
 exports.post = async(req, res, next) => {
   try{
+    if(req.body.turnOn)
+    {
+      client.publish('topTakeAPicture', 'on');
+    } 
+
     await repository.create(req.body)
     res.status(201).send({
       message: 'Saved successfully'
