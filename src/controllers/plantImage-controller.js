@@ -1,5 +1,5 @@
 const repository = require('../repositories/plantImage-repository');
-const client = require('../../mqtt');
+const client = require('../mqtt');
 
 exports.get = async(req, res, next) => {
   try {
@@ -16,6 +16,7 @@ exports.post = async(req, res, next) => {
   try{
     if(req.body.turnOn)
     {
+      console.log("entrou http");
       client.publish('topTakeAPicture', 'on');
     } 
 

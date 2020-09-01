@@ -77,7 +77,7 @@ client.on('connect', function() {
     }
   })
 
-  client.subscribe('PICTURE', function (err) {
+  client.subscribe('topPICTURE', function (err) {
     if(!err){
       console.log("conectado - PICTURE");
     }
