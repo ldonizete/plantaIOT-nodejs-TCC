@@ -121,7 +121,7 @@ client.on('message', function(topic, message, packet) {
       })
     }
    
-    if(topic === "PICTURE")
+    if(topic === "topPICTURE")
     {
       saveImage(message);
     }
