@@ -16,11 +16,8 @@ exports.post = async(req, res, next) => {
   try{
     if(req.body.turnOn)
     {
-      console.log("entrou http");
       client.publish('topTakeAPicture', 'on');
     } 
-
-    await repository.create(req.body)
     res.status(201).send({
       message: 'Saved successfully'
     });
