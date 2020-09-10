@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   temperature: {
-    type: String,
+    type: Number,
     required:true
   },
   date: {

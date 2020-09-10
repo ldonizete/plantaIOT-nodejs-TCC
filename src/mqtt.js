@@ -85,40 +85,51 @@ client.on('connect', function() {
 })
 
 client.on('message', function(topic, message, packet) {
-
     if(topic === 'topUmidadeSolo')
     {
-      soilRepository.create({
-        moisture: message.toString()
-      })
+      if(!isNaN(Number(message.toString())))
+      {
+        soilRepository.create({
+          moisture: Number(message.toString()),
+          //Tentar pegar automatico
+          //Setar o id gerado no esp32 e fazer 
+          //ele enviar o id para salvar
+          product:"5f104a6d3500f222d0086512"
+        })
+      }
     }
     
     if(topic === 'topFloatSwitch')
     {
-      floatSwitchRepository.create({
-        levelWater: message.toString()
-      })
-    }
-
-    if(topic === 'topSensorLDR')
-    {
-      ldrRepository.create({
-        lightness: message.toString()
-      })
+      if(isNaN(Number(message.toString())))
+      {
+        floatSwitchRepository.create({
+          levelWater: message.toString(),
+          product:"5f104a6d3500f222d0086512"
+        })
+      }
     }
 
     if(topic === 'topHumidity')
     {
-      humidityRepository.create({
-        humidity: message.toString()
-      })
+      if(!isNaN(Number(message.toString())))
+      {
+        humidityRepository.create({
+          humidity: Number(message.toString()),
+          product:"5f104a6d3500f222d0086512"
+        })
+      }
     }
   
     if(topic === 'topTemperature')
     {
-      temperatureRepository.create({
-        temperature: message.toString()
-      })
+      if(!isNaN(Number(message.toString())))
+      {
+        temperatureRepository.create({
+          temperature: Number(message.toString()),
+          product:"5f104a6d3500f222d0086512"
+        })
+      }
     }
    
     if(topic === "topPICTURE")

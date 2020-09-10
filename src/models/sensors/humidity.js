@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
   humidity: {
-    type: String,
+    type: Number,
     required:true
   },
   date: {
