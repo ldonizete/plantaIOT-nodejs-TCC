@@ -21,6 +21,7 @@ exports.post = async(req, res, next) => {
       client.publish('topAutomatic', 'off');
     }
 
+    await repository.create(req.body)
     res.status(201).send({
       message: 'Success'
     });
