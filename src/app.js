@@ -26,6 +26,7 @@ const Exhaust = require('./models/triggers/exhaust');
 const Fan = require('./models/triggers/fan')
 const WaterBomb = require('./models/triggers/waterBomb');
 const Light = require('./models/triggers/light');
+const auto = require('./models/triggers/automatic');
 
 //Load the routes
 const indexRoute = require('./routes/index-route');
@@ -46,6 +47,7 @@ const waterBombRoute = require('./routes/triggers/waterBomb-route');
 const lightRoute = require('./routes/triggers/light-route');
 const exhaustRoute = require('./routes/triggers/exhaust-route');
 const fanRoute = require('./routes/triggers/fan-route');
+const autoRoute = require('./routes/triggers/automatic-route');
 
 app.use(bodyParser.json({
   limit: '5mb'
@@ -70,5 +72,6 @@ app.use('/exhausts', exhaustRoute);
 app.use('/fans', fanRoute);
 app.use('/plants', plantRoute);
 app.use('/plantImages', plantImageRoute);
+app.use('/autos', autoRoute);
 
 module.exports = app;
