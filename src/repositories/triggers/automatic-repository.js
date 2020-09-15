@@ -10,10 +10,10 @@ exports.get = async() => {
 }
 
 exports.create = async(data) => {
-  var automatic = new Automatic(data);
-  await automatic.save();
+  var auto = new Automatic(data);
+  await auto.save();
 }
 
 exports.delete = async(id) => {
-  await Automatic.findOneAndRemove(id);
+  await auto.findOneAndRemove(id);
 }

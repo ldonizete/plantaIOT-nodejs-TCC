@@ -14,7 +14,14 @@ exports.get = async(req, res, next) => {
 
 exports.post = async(req, res, next) => {
   try {
-    client.publish('topAutomatic', req.body.turnOn);
+    if(req.body.turnOn)
+    {
+      client.publish('topAutomatic', 'on');
+    }else{
+      client.publish('topAutomatic', 'off');
+    }
+    
+    await repository.create(req.body)
     res.status(201).send({
       message: 'Success'
     });
