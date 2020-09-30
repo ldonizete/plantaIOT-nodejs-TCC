@@ -8,7 +8,7 @@ const Humidity = mongoose.model('Humidity');
 
 exports.get = async() => {
   const res = await Humidity
-  .find({active: true}, 'humidity')
+  .findOne({active: true}, 'humidity')
   .sort({ _id: -1 })
   .limit(1);
   return res;
@@ -20,6 +20,16 @@ exports.getByDate = async(date) => {
       date: date,
       active: true
     });
+  return res;
+}
+
+exports.getByProduct = async(productsID) =>
+{
+  const res = await Humidity
+    .find({active:true, product:productsID})
+    .sort({ date: -1 })
+    .limit(24)
+  
   return res;
 }
 

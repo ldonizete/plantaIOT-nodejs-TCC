@@ -22,6 +22,17 @@ exports.getByDate = async(req, res, next) => {
   }
 }
 
+exports.getByProduct = async(req, res, next) => {
+  try {
+    var data = await repository.getByProduct(req.params.productsID);
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: 'Failed your request'
+    })
+  }
+}
+
 exports.post = async(req, res, next) => {
   try {
     await repository.create(req.body)

@@ -20,10 +20,20 @@ exports.getByDate = async(date) => {
 
 exports.getLastData = async() => {
   const res = await Soil
-  .find({active: true})
+  .findOne({active: true})
   .sort({ _id: -1 })
   .limit(1)
   .populate('product')
+  return res;
+}
+
+exports.getByProduct = async(productsID) =>
+{
+  const res = await Soil
+    .find({active:true, product:productsID})
+    .sort({ date: -1 })
+    .limit(24)
+  
   return res;
 }
 

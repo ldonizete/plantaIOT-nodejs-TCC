@@ -23,6 +23,16 @@ exports.getByDate = async(date) => {
   return res;
 }
 
+exports.getByProduct = async(productsID) =>
+{
+  const res = await Temperature
+    .find({active:true, product:productsID})
+    .sort({ date: -1 })
+    .limit(24)
+  
+  return res;
+}
+
 exports.create = async(data) => {
   var temperature = new Temperature(data);
   await temperature.save();
