@@ -17,13 +17,16 @@ const schema = new Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Customer',
-    required: true
+    required: false
   },
   date: {
     type: Date,
     required: true,
     default: Date.now
-  }
+  },
+  soils:[],
+  temperatures:[],
+  humiditys:[]
 })
 
 module.exports = mongoose.model('Product', schema);

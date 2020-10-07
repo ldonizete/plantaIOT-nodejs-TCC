@@ -12,9 +12,20 @@ exports.get = async(req, res, next) => {
   }
 }
 
+exports.getSerie = async(req, res, next) => {
+  try {
+    var data = await repository.getSerie(req.params.id);
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: "Falha ao processar sua requisição"
+    })
+  }
+}
+
 exports.getCustomer = async(req, res, next) => {
   try {
-    var data = await repository.getCustomer(req.params.customer);
+    var data = await repository.getCustomer(req.params.id);
     res.status(200).send(data);
   } catch (e) {
     res.status(500).send({
