@@ -26,10 +26,8 @@ exports.getByDate = async(date) => {
 exports.getByProduct = async(productsID) =>
 {
   const res = await Humidity
-    .find({active:true, product:productsID})
+    .findOne({active:true, product:productsID})
     .sort({ date: -1 })
-    .limit(24)
-  
   return res;
 }
 

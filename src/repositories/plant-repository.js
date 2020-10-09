@@ -8,6 +8,14 @@ exports.get = async() => {
   return res;
 }
 
+exports.getByProduct = async(productsID) =>
+{
+  const res = await Plant
+    .findOne({active:true, product:productsID})
+    .sort({ date: -1 })
+  return res;
+}
+
 exports.create = async(data) => {
   var plant = new Plant(data);
   await plant.save();

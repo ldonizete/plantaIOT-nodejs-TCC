@@ -12,6 +12,17 @@ exports.get = async(req, res, next) => {
   }
 }
 
+exports.getByPlant = async(req, res, next) => {
+  try {
+    var data = await repository.getByPlant(req.params.plantID);
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: 'Failed your request'
+    })
+  }
+}
+
 exports.post = async(req, res, next) => {
   try{
     if(req.body.turnOn)
