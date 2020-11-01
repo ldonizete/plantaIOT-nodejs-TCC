@@ -21,6 +21,11 @@ exports.create = async(data) => {
   await plant.save();
 }
 
+exports.update = async(id, data) => {
+  console.log(id,data)
+  await Plant.findByIdAndUpdate(id, data)
+}
+
 exports.delete = async(id) => {
   await Plant
     .findOneAndRemove(id);

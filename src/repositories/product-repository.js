@@ -12,7 +12,6 @@ exports.get = async() => {
   return res;
 }
 
-
 exports.getSerie = async(serie) => {
   const product = await Product.findOne({active:true, serie: serie});
   

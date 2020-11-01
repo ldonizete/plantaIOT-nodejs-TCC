@@ -35,6 +35,19 @@ exports.post = async(req, res, next) => {
   }
 }
 
+exports.put = async(req, res, next) => {
+  try{
+    await repository.update(req.params.id, req.body)
+    res.status(201).send({
+      message: 'Saved successfully'
+    });
+  } catch (e) {
+    res.status(500).send({
+      message: 'Failed to save'
+    })
+  }
+}
+
 exports.delete = async(req, res, next) => {
   try {
      await repository.delete(req.body.id)

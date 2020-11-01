@@ -6,6 +6,9 @@ const schema = new Schema({
     type: String,
     required: true
   }, 
+  name: {
+    type: String,
+  }, 
   description: {
     type: String
   },
@@ -26,7 +29,12 @@ const schema = new Schema({
   },
   soils:[],
   temperatures:[],
-  humiditys:[]
+  humiditys:[],
+  plant: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Plant',
+    required: false,
+  },
 })
 
 module.exports = mongoose.model('Product', schema);
