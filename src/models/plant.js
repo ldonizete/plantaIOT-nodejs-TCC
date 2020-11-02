@@ -36,7 +36,11 @@ const schema = new Schema({
     type: Number,
     required: true
   },
-  lightPerDay: {
+  startLight: {
+    type: Number,
+    required: true
+  },
+  endLight: {
     type: Number,
     required: true
   },
