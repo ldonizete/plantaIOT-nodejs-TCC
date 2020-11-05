@@ -14,6 +14,17 @@ exports.get = async(req, res, next) => {
 exports.getByProduct = async(req, res, next) => {
   try {
     var data = await repository.getByProduct(req.params.productsID);
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: 'Failed your request'
+    })
+  }
+}
+
+exports.getByIDProduct = async(req, res, next) => {
+  try {
+    var data = await repository.getByProduct(req.params.productsID);
     var planta = {config:data}
     res.status(200).send(planta);
   } catch (e) {
