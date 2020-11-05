@@ -20,6 +20,8 @@ const humidityRepository = require('./repositories/sensors/humidity-repository')
 const temperatureRepository = require('./repositories/sensors/temperature-repository');
 const plantImageRepository = require('./repositories/plantImage-repository');
 
+var plantID = "5f31db29f54fb60944019ed7";
+
 var client = mqtt.connect("http://mqtt.eclipse.org:1883");
 
 client.on('connect', function() {
@@ -82,6 +84,12 @@ client.on('connect', function() {
       console.log("conectado - PICTURE");
     }
   })
+
+  client.subscribe('topPLANTID', function (err) {
+    if(!err){
+      console.log("conectado - topPLANTID");
+    }
+  })
 })
 
 client.on('message', function(topic, message, packet) {
@@ -131,7 +139,12 @@ client.on('message', function(topic, message, packet) {
         })
       }
     }
-   
+
+    if(topic === "topPLANTID")
+    {
+      plantID = message.toString();
+    }
+    
     if(topic === "topPICTURE")
     {
       saveImage(message);
@@ -159,7 +172,7 @@ async function saveImage (message) {
 
     plantImageRepository.create({
       image :'https://nodeplant.blob.core.windows.net/plant-images/' + fileName,
-      plant: "5f31db29f54fb60944019ed7"
+      plant: plantID//"5f31db29f54fb60944019ed7"
     })
   } catch (error) {
     console.log(error);
