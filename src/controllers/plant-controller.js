@@ -1,4 +1,5 @@
 const repository = require('../repositories/plant-repository');
+const client = require('../mqtt');
 
 exports.get = async(req, res, next) => {
   try {
@@ -53,6 +54,8 @@ exports.put = async(req, res, next) => {
     res.status(201).send({
       message: 'Saved successfully'
     });
+    
+    client.publish('topUpdateConfig', "on");
   } catch (e) {
     res.status(500).send({
       message: 'Failed to save'

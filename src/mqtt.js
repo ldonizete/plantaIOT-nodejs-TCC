@@ -49,12 +49,6 @@ client.on('connect', function() {
     }
   })
 
-  client.subscribe('topSensorLDR', function (err) {
-    if(!err){
-      console.log("conectado - topSensorLDR");
-    }
-  })
-
   client.subscribe('topHumidity', function (err) {
     if(!err){
       console.log("conectado - topHumidity");
@@ -67,17 +61,17 @@ client.on('connect', function() {
     }
   })
 
-  client.subscribe('topFan', function (err) {
-    if(!err){
-      console.log("conectado - topFan");
-    }
-  })
+  // client.subscribe('topFan', function (err) {
+  //   if(!err){
+  //     console.log("conectado - topFan");
+  //   }
+  // })
 
-  client.subscribe('topExhaust', function (err) {
-    if(!err){
-      console.log("conectado - topExhaust");
-    }
-  })
+  // client.subscribe('topExhaust', function (err) {
+  //   if(!err){
+  //     console.log("conectado - topExhaust");
+  //   }
+  // })
 
   client.subscribe('topPICTURE', function (err) {
     if(!err){
@@ -90,6 +84,13 @@ client.on('connect', function() {
       console.log("conectado - topPLANTID");
     }
   })
+
+  client.subscribe('topUpdateConfig', function (err) {
+    if(!err){
+      console.log("conectado - topUpdateConfig");
+    }
+  })
+  
 })
 
 client.on('message', function(topic, message, packet) {
